@@ -1,32 +1,41 @@
+"use client";
+
+import Link from "next/link";
 import css from "./AuthNavigation.module.css";
 
-
-
 export default function AuthNavigation() {
-    return 
-    <><li className={css.navigationItem}>
-  <a href="/profile" prefetch={false} className={css.navigationLink}>
-    Profile
-  </a>
-</li>
+  return (
+    <>
+      <li className={css.navigationItem}>
+        <Link href="/profile" prefetch={false} className={css.navigationLink}>
+          Profile
+        </Link>
+      </li>
 
-<li className={css.navigationItem}>
-  <p className={css.userEmail}>User email</p>
-  <button className={css.logoutButton}>
-    Logout
-  </button>
-</li>
+      <li className={css.navigationItem}>
+        <p className={css.userEmail}>User email</p>
+        <button
+          className={css.logoutButton}
+          type="button"
+          onClick={() => {
 
-<li className={css.navigationItem}>
-  <a href="/sign-in" prefetch={false} className={css.navigationLink}>
-    Login
-  </a>
-</li>
+          }}
+        >
+          Logout
+        </button>
+      </li>
 
-<li className={css.navigationItem}>
-  <a href="/sign-up" prefetch={false} className={css.navigationLink}>
-    Sign up
-  </a>
-</li>
-</> 
+      <li className={css.navigationItem}>
+        <Link href="/sign-in" prefetch={false} className={css.navigationLink}>
+          Login
+        </Link>
+      </li>
+
+      <li className={css.navigationItem}>
+        <Link href="/sign-up" prefetch={false} className={css.navigationLink}>
+          Sign up
+        </Link>
+      </li>
+    </>
+  );
 }

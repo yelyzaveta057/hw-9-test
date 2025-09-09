@@ -1,4 +1,5 @@
-import nextServer from "next/dist/server/next-server";
+import { User } from "@/types/user";
+import { nextServer } from "./api";
 
 export type RegisterRequest = {
   email: string;
@@ -6,16 +7,18 @@ export type RegisterRequest = {
   userName: string;
 };
 
-export type User = {
-  id: string;
-  email: string;
-  userName?: string;
-  photoUrl?: string;
-  createdAt: Date;
-  updatedAt: Date;
-};
 
 export const register = async (data: RegisterRequest) => {
   const res = await nextServer.post<User>('/auth/register', data);
+  return res.data;
+};
+
+export type LoginRequest = {
+  email: string;
+  password: string;
+};
+
+export const login = async (data: LoginRequest) => {
+  const res = await nextServer.post<User>('/auth/login', data);
   return res.data;
 };

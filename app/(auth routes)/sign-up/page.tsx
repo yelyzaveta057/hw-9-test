@@ -1,11 +1,15 @@
 // app/(public routes)/sign-up/page.tsx
+
 'use client';
 
-import css from "./SignUpPage.module.css"
+
+// Додаємо імпорти
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { register, RegisterRequest } from '@/lib/api';
-import { ApiError } from '@/app/api/api'
+import { register, RegisterRequest } from '@/lib/api/clientApi';
+import { ApiError } from '@/lib/api';
+import css from "./SignUpPage.module.css"
+
 
 const SignUp = () => {
   const router = useRouter();
@@ -26,7 +30,7 @@ const SignUp = () => {
       }
     } catch (error) {
       setError(
-        (error as ApiError).response?.data?.error ??
+        (error as ApiError).response?.data?.erro ??
           (error as ApiError).message ??
           'Oops... some error'
       )
@@ -38,7 +42,7 @@ const SignUp = () => {
     <>
      <main className={css.mainContent}>
   <h1 className={css.formTitle}>Sign up</h1>
-	<form className={css.form}>
+	<form className={css.form} action={handleSubmit}>
     <div className={css.formGroup}>
       <label htmlFor="email">Email</label>
       <input id="email" type="email" name="email" className={css.input} required />
@@ -55,8 +59,9 @@ const SignUp = () => {
       </button>
     </div>
 
-    <p className={css.error}>Error</p>
+ {error && <p className={css.error}>{error}</p>}
   </form>
+
 </main>
 
     </>

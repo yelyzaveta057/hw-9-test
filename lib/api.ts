@@ -1,14 +1,13 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import type { Note, NewNoteData} from '../types/note';
-import { apiServer } from './api/api';
 
 
- axios.defaults.baseURL = 'https://notehub-api.goit.study';
+export type ApiError = AxiosError<{erro:string}>;
 
-// export const api = axios.create({
-//   baseURL: 'https://notehub-api.goit.study',
-//   withCredentials: true,
-// });
+export const nextServer = axios.create({
+  baseURL: 'https://notehub-api.goit.study',
+  withCredentials: true,
+});
 
 export interface NotesHttpResponse {
   notes: Note[];
@@ -31,7 +30,7 @@ export const fetchNotes = async (
   }
 if (tag) params.tag = tag;
 
-  const response = await apiServer.get<NotesHttpResponse>('/notes', { params });
+  const response = await nextServer.get<NotesHttpResponse>('/notes', { params });
 
   return response.data;
 };
@@ -39,17 +38,19 @@ if (tag) params.tag = tag;
 
 
 export const fetchNoteById = async (id: string): Promise<Note> => {
-  const res = await apiServer.get<Note>(`/notes/${id}`);
+  const res = await nextServer.get<Note>(`/notes/${id}`);
   return res.data;
 };
 
 export const createNote = async (noteData: NewNoteData): Promise<Note> => {
-  const res = await apiServer.post<Note>('/notes', noteData);
+  const res = await nextServer.post<Note>('/notes', noteData);
   return res.data;
 };
 
 export const deleteNote = async (noteId: string): Promise<Note> => {
-  const res = await apiServer.delete<Note>(`/notes/${noteId}`);
+  const res = await nextServer.delete<Note>(`/notes/${noteId}`);
   return res.data;
 };
+
+
 
