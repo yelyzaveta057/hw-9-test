@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios';
 import type { Note, NewNoteData} from '../types/note';
 
 
-export type ApiError = AxiosError<{erro:string}>;
+
 
 export const nextServer = axios.create({
   baseURL: 'https://notehub-api.goit.study',

@@ -1,4 +1,3 @@
-// app/(public routes)/sign-in/page.tsx
 
 
 'use client';
@@ -8,7 +7,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import css from "./SignInPage.module.css"
 import { login, LoginRequest } from '@/lib/api/clientApi';
-import { ApiError } from '@/lib/api';
+import { ApiError } from '@/lib/api/api';
+
 
 
 const SignIn = () => {
@@ -38,7 +38,7 @@ const SignIn = () => {
   };
   return (
     <main className={css.mainContent}>
- <form className={css.form}>
+ <form className={css.form} action={handleSubmit}>
     <h1 className={css.formTitle}>Sign in</h1>
 
     <div className={css.formGroup}>
