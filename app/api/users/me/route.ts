@@ -5,13 +5,13 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { logErrorResponse } from '../../_utils/utils';
 import { isAxiosError } from 'axios';
-import { nextServer } from '../../api';
+import { api } from '../../api';
 
 export async function GET() {
   try {
     const cookieStore = await cookies();
 
-    const res = await nextServer.get('/users/me', {
+    const res = await api.get('/users/me', {
       headers: {
         Cookie: cookieStore.toString(),
       },
@@ -35,7 +35,7 @@ export async function PATCH(request: Request) {
     const cookieStore = await cookies();
     const body = await request.json();
 
-    const res = await nextServer.patch('/users/me', body, {
+    const res = await api.patch('/users/me', body, {
       headers: {
         Cookie: cookieStore.toString(),
       },

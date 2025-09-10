@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 import { parse } from 'cookie';
 import { isAxiosError } from 'axios';
 import { logErrorResponse } from '../../_utils/utils';
-import { nextServer } from '../../api';
+import { api } from '../../api';
 
 export async function GET(request: NextRequest) {
   try {
@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     const next = request.nextUrl.searchParams.get('next') || '/';
 
     if (refreshToken) {
-      const apiRes = await nextServer.get('auth/session', {
+      const apiRes = await api.get('auth/session', {
         headers: {
           Cookie: cookieStore.toString(),
         },
