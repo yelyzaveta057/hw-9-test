@@ -46,17 +46,17 @@ export async function fetchNotesClient(
   return data;
 }
 
-export async function fetchNoteByIdClient(id: string): Promise<Note> {
+export async function fetchNoteById(id: string): Promise<Note> {
   const { data } = await nextServer.get<Note>(`/notes/${id}`);
   return data;
 }
 
-export async function createNoteClient(noteData: NewNoteData): Promise<Note> {
+export async function createNote(noteData: NewNoteData): Promise<Note> {
   const { data } = await nextServer.post<Note>("/notes", noteData);
   return data;
 }
 
-export async function deleteNoteClient(noteId: string): Promise<Note> {
+export async function deleteNote(noteId: string): Promise<Note> {
   const { data } = await nextServer.delete<Note>(`/notes/${noteId}`);
   return data;
 }

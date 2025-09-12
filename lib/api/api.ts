@@ -1,5 +1,6 @@
 import axios, { AxiosError } from 'axios';
-export type ApiError = AxiosError<{erro:string}>;
+
+
 
 
 export const nextServer = axios.create({

@@ -2,10 +2,6 @@ import css from "./Header.module.css";
 import React from "react";
 import Link from "next/link";
 
-
-
-
-
 const Header = async () => {
 
     return <header className={css.header}>
@@ -33,6 +29,3 @@ const Header = async () => {
 
 export default Header;
 
-function tagsList() {
-  throw new Error("Function not implemented.");
-}

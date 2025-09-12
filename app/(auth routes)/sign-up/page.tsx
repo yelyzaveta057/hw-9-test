@@ -7,8 +7,10 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { register, RegisterRequest } from '@/lib/api/clientApi';
-import { ApiError } from '@/lib/api';
+
 import css from "./SignUpPage.module.css"
+import { ApiError } from '@/app/api/api';
+
 
 
 const SignUp = () => {

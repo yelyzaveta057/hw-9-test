@@ -33,17 +33,17 @@ export async function fetchNotesServer(
   return data;
 }
 
-export async function fetchNoteByIdServer(id: string): Promise<Note> {
+export async function fetchNoteById(id: string): Promise<Note> {
   const { data } = await nextServer.get<Note>(`/notes/${id}`, withCookie());
   return data;
 }
 
-export async function createNoteServer(noteData: NewNoteData): Promise<Note> {
+export async function createNote(noteData: NewNoteData): Promise<Note> {
   const { data } = await nextServer.post<Note>("/notes", noteData, withCookie());
   return data;
 }
 
-export async function deleteNoteServer(noteId: string): Promise<Note> {
+export async function deleteNote(noteId: string): Promise<Note> {
   const { data } = await nextServer.delete<Note>(`/notes/${noteId}`, withCookie());
   return data;
 }
@@ -69,5 +69,5 @@ export const checkServerSession = async () => {
     },
   });
   
-  return res;
+  return res;                                                                                                                                               
 };
