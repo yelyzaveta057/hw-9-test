@@ -2,11 +2,10 @@
 
 
 export type User = {
-  avatar: string;
   id: string;
   email: string;
-  userName?: string;
-  photoUrl?: string;
+  username: string;
+  avatar: string;
   createdAt: Date;
   updatedAt: Date;
 };

@@ -76,7 +76,7 @@ router.back();
               name="username"
               type="text"
               className={css.input}
-               placeholder={user?.userName}
+               placeholder={user?.username}
               required
             />
           </div>

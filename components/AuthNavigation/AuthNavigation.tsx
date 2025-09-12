@@ -25,7 +25,7 @@ const AuthNavigation = () => {
     <>
       <li className={css.navigationItem}>
         <p className={css.userEmail}>
-          {user?.userName ? user?.userName : user?.email}
+          {user?.username ? user?.username : user?.email}
         </p>
       </li>
       <li>
