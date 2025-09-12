@@ -81,4 +81,3 @@ export const logout = async (): Promise<void> => {
   await nextServer.post("/auth/logout");
 };
 
-export type { RegisterRequest };
