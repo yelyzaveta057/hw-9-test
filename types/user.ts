@@ -1,8 +1,8 @@
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+
 
 
 export type User = {
-  avatar: string | StaticImport;
+  avatar: string;
   id: string;
   email: string;
   userName?: string;

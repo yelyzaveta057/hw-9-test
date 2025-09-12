@@ -9,7 +9,7 @@ export interface NotesHttpResponse {
   totalPages: number;
 }
 
-export async function fetchNotesClient(
+export async function fetchNotes(
   query = "",
   page = 1,
   perPage = 12,

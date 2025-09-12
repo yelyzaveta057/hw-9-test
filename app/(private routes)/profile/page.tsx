@@ -48,7 +48,7 @@ const ProfilePage = async () => {
           />
         </div>
         <div className={css.profileInfo}>
-          <p>Username: {user ? user.userName : "undefined"}</p>
+          <p>Username: {user ? user.username : ""}</p>
           <p>Email: {user ? user.email : "undefined"}</p>
         </div>
       </div>
