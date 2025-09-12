@@ -2,6 +2,7 @@ import css from "./Header.module.css";
 import React from "react";
 import Link from "next/link";
 
+
 const Header = async () => {
 
     return <header className={css.header}>
@@ -22,6 +23,7 @@ const Header = async () => {
           <li>
             <Link href="/sign-up">Register</Link>
           </li>
+       
     </ul>
   </nav>
 </header>

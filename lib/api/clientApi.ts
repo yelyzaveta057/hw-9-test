@@ -1,33 +1,13 @@
 "use client";
-import { User } from "@/types/user";
+import { CheckSessionRequest, LoginRequest, RegisterRequest, UpdateUserRequest, User } from "@/types/user";
 import { nextServer } from "./api";
 import { NewNoteData, Note } from "@/types/note";
 
-export type RegisterRequest = {
-  email: string;
-  password: string;
-  userName: string;
-};
+
 export interface NotesHttpResponse {
   notes: Note[];
   totalPages: number;
 }
-
-export type LoginRequest = {
-  email: string;
-  password: string;
-};
-
-
-export const register = async (data: RegisterRequest) => {
-  const res = await nextServer.post<User>('/auth/register', data);
-  return res.data;
-};
-
-export const login = async (data: LoginRequest) => {
-  const res = await nextServer.post<User>('/auth/login', data);
-  return res.data;
-};
 
 export async function fetchNotesClient(
   query = "",
@@ -61,3 +41,42 @@ export async function deleteNote(noteId: string): Promise<Note> {
   return data;
 }
 
+
+export const register = async (data: RegisterRequest) => {
+  const res = await nextServer.post<User>("/auth/register", data);
+  return res.data;
+};
+
+// LOGIN
+
+export const login = async (data: LoginRequest) => {
+  const res = await nextServer.post<User>("/auth/login", data);
+  return res.data;
+};
+
+// PATCH
+
+export const editProfile = async (data: UpdateUserRequest) => {
+  const res = await nextServer.patch<User>("/users/me", data);
+  return res.data;
+};
+
+// CHECK SESSION
+
+export const checkSession = async () => {
+  const res = await nextServer.get<CheckSessionRequest>("/auth/session");
+  return res.data.success;
+};
+
+// AUTH ME
+
+export const getMe = async (): Promise<User> => {
+  const { data } = await nextServer.get<User>("/users/me");
+  return data;
+};
+
+// LOGOUT
+
+export const logout = async (): Promise<void> => {
+  await nextServer.post("/auth/logout");
+};

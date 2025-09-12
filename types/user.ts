@@ -1,3 +1,4 @@
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 
 export type User = {
@@ -8,4 +9,25 @@ export type User = {
   photoUrl?: string;
   createdAt: Date;
   updatedAt: Date;
+};
+
+export type CheckSessionRequest = {
+  success: boolean;
+};
+
+export type UpdateUserRequest = {
+  username: string;
+  email?: string;
+  avatar: string;
+};
+export type LoginRequest = {
+  email: string;
+  password: string;
+};
+
+export type RegisterRequest = {
+  email: string;
+  password?: string;
+  avatar?: string;
+  username: string;
 };

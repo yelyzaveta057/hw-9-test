@@ -4,6 +4,7 @@ import Link from "next/link";
 import css from "./AuthNavigation.module.css";
 
 export default function AuthNavigation() {
+  const handleLogout = () => {};
   return (
     <>
       <li className={css.navigationItem}>
@@ -17,9 +18,7 @@ export default function AuthNavigation() {
         <button
           className={css.logoutButton}
           type="button"
-          onClick={() => {
-
-          }}
+          onClick={handleLogout}
         >
           Logout
         </button>
